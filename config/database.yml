@@ -1,0 +1,24 @@
+development: &development
+  adapter: mysql2
+  url: <%= ENV['DATABASE_URL'] %>
+  encoding: utf8
+  pool: 5
+
+test:
+  adapter: sqlite3
+  database: ":memory:"
+  pool: 5
+  timeout: 5000
+  verbosity: quiet
+
+production: &production
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch('DB_POOL_SIZE', 5).to_i %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+integration:
+  <<: *production
+
+staging:
+  <<: *production

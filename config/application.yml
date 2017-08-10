@@ -1,0 +1,11 @@
+defaults: &defaults
+  grpc: &grpc
+    server: &server
+      url: "<%= ENV.fetch('GRPC_SERVER_URL', '0.0.0.0:9000') %>"
+      tokens: "<%= ENV.fetch('GRPC_AUTH_TOKENS', 'austin') %>"
+
+development: &development
+  <<: *defaults
+
+production: &production
+  <<: *defaults
