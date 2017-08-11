@@ -1,28 +1,3 @@
-# Gruf Demo Rails Application
-
-This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf), a gRPC Ruby framework.
-
-## Running
-
-```bash
-bundle install
-bundle exec rake db:create
-bundle exec rake db:seed
-foreman start
-``` 
-
-## Testing with a Client
-
-Then in another console:
-
-```bash
-bundle exec rake test:get_product
-```
-
-This should output you the result of the product data.
-
-## License
-
 Copyright (c) 2017-present, BigCommerce Pty. Ltd. All rights reserved 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
