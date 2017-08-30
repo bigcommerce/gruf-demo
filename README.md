@@ -24,7 +24,7 @@ bundle exec rake test:get_product
 ### Server Streamer (Get a list of Products)
 
 ```bash
-bundle exec rake test:get_product
+bundle exec rake test:get_products
 ```
 
 ## License
