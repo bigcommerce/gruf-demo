@@ -13,13 +13,19 @@ foreman start
 
 ## Testing with a Client
 
-Then in another console:
+Then in another console, you can run provided rake tasks to see it in action.
+
+### Request/Response (Get a Product)
 
 ```bash
 bundle exec rake test:get_product
 ```
 
-This should output you the result of the product data.
+### Server Streamer (Get a list of Products)
+
+```bash
+bundle exec rake test:get_product
+```
 
 ## License
 
