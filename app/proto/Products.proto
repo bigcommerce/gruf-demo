@@ -3,7 +3,10 @@ syntax = "proto3";
 package rpc;
 
 service Products {
+    // Demonstrates a request response call
     rpc GetProduct(GetProductReq) returns (GetProductResp) {}
+    // Demonstrates a server streamer call
+    rpc GetProducts(GetProductsReq) returns (stream Product) {}
 }
 
 message Product {
@@ -18,4 +21,9 @@ message GetProductReq {
 
 message GetProductResp {
     Product product = 1;
+}
+
+message GetProductsReq {
+    string search = 1;
+    uint32 limit = 2;
 }

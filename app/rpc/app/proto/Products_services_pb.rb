@@ -15,6 +15,7 @@ module Rpc
       self.service_name = 'rpc.Products'
 
       rpc :GetProduct, GetProductReq, GetProductResp
+      rpc :GetProducts, GetProductsReq, stream(Product)
     end
 
     Stub = Service.rpc_stub_class
