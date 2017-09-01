@@ -19,6 +19,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :search, :string, 1
     optional :limit, :uint32, 2
   end
+  add_message "rpc.CreateProductsResp" do
+    repeated :products, :message, 1, "rpc.Product"
+  end
 end
 
 module Rpc
@@ -26,4 +29,5 @@ module Rpc
   GetProductReq = Google::Protobuf::DescriptorPool.generated_pool.lookup("rpc.GetProductReq").msgclass
   GetProductResp = Google::Protobuf::DescriptorPool.generated_pool.lookup("rpc.GetProductResp").msgclass
   GetProductsReq = Google::Protobuf::DescriptorPool.generated_pool.lookup("rpc.GetProductsReq").msgclass
+  CreateProductsResp = Google::Protobuf::DescriptorPool.generated_pool.lookup("rpc.CreateProductsResp").msgclass
 end

@@ -5,15 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails'
+gem 'faker'
 gem 'foreman'
+gem 'gruf', '~> 1.2.6'
+gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.1.3'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
-gem 'jbuilder', '~> 2.5'
-gem 'dotenv-rails'
 gem 'settingslogic'
 
-gem 'gruf', '~> 1.2'
 
 group :development, :test do
   gem 'better_errors'
@@ -28,6 +29,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :test do

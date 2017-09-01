@@ -1,10 +1,18 @@
 require_relative 'app/proto/Products_services_pb'
 
-
+##
+# Represents a product service that is used for illustrating server calls
+#
 class ProductsService < Rpc::Products::Service
   include Gruf::Service
 
+  def initialize
+    @received_products = Hash.new { |h, k| h[k] = [] }
+  end
+
   ##
+  # Illustrates a request and response call
+  #
   # @param [Rpc::GetProductReq] req The incoming gRPC request object
   # @param [GRPC::ActiveCall] call The gRPC active call instance
   # @return [Rpc::GetProductResp] The response
@@ -24,6 +32,8 @@ class ProductsService < Rpc::Products::Service
   end
 
   ##
+  # Illustrates a server streaming call
+  #
   # @param [Rpc::GetProductsReq] req The incoming gRPC request object
   # @param [GRPC::ActiveCall] call The gRPC active call instance
   # @return [Rpc::Product] An enumerable of Products that is streamed
@@ -36,5 +46,34 @@ class ProductsService < Rpc::Products::Service
     products.map(&:to_proto)
   rescue => e
     fail!(req, call, :internal, :unknown, "Unknown error when listing Products: #{e.message}")
+  end
+
+  ##
+  # Illustrates a client streaming call
+  #
+  # @param [GRPC::ActiveCall] call
+  # @return [Rpc::CreateProductsResp]
+  #
+  def create_products(call)
+    products = []
+    call.each_remote_read do |req|
+      products << Product.new(name: req.name, price: req.price).to_proto
+    end
+    Rpc::CreateProductsResp.new(products: products)
+  end
+
+  ##
+  # @param [Array<Rpc::Product>] requests
+  # @param [GRPC::ActiveCall] _call
+  # @return [Enumerable<Rpc::Product>]
+  #
+  def create_products_in_stream(requests, _call)
+    Rails.logger.info 'Got to create_products_in_stream'
+    #Rpc::ProductResponseEnumerator.new(requests, @received_products)
+    products = []
+    requests.each do |r|
+      products << Product.new(name: r.name, price: r.price).to_proto
+    end
+    products
   end
 end

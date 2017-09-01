@@ -14,8 +14,14 @@ module Rpc
       self.unmarshal_class_method = :decode
       self.service_name = 'rpc.Products'
 
+      # Demonstrates a request response call
       rpc :GetProduct, GetProductReq, GetProductResp
+      # Demonstrates a server streamer call
       rpc :GetProducts, GetProductsReq, stream(Product)
+      # Demonstrates a client streaming call
+      rpc :CreateProducts, stream(Product), CreateProductsResp
+      # Demonstrates a bidirectional streaming call
+      rpc :CreateProductsInStream, stream(Product), stream(Product)
     end
 
     Stub = Service.rpc_stub_class

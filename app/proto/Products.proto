@@ -7,6 +7,10 @@ service Products {
     rpc GetProduct(GetProductReq) returns (GetProductResp) {}
     // Demonstrates a server streamer call
     rpc GetProducts(GetProductsReq) returns (stream Product) {}
+    // Demonstrates a client streaming call
+    rpc CreateProducts(stream Product) returns (CreateProductsResp) {}
+    // Demonstrates a bidirectional streaming call
+    rpc CreateProductsInStream(stream Product) returns (stream Product) {}
 }
 
 message Product {
@@ -26,4 +30,8 @@ message GetProductResp {
 message GetProductsReq {
     string search = 1;
     uint32 limit = 2;
+}
+
+message CreateProductsResp {
+    repeated Product products = 1;
 }

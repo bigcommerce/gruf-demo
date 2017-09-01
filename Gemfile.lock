@@ -38,8 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     better_errors (2.3.0)
       coderay (>= 1.0.0)
@@ -59,14 +59,16 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.6.1)
-    faraday (0.12.2)
+    faker (1.6.6)
+      i18n (~> 0.5)
+    faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    google-protobuf (3.3.0)
+    google-protobuf (3.4.0.2)
     googleauth (0.5.3)
       faraday (~> 0.12)
       jwt (~> 1.4)
@@ -75,11 +77,11 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    grpc (1.4.5)
+    grpc (1.6.0)
       google-protobuf (~> 3.1)
       googleauth (~> 0.5.1)
     grpc-tools (1.4.5)
-    gruf (1.2.0)
+    gruf (1.2.6)
       activesupport
       grpc (~> 1.4)
       grpc-tools (~> 1.4)
@@ -114,7 +116,13 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     os (0.9.6)
-    public_suffix (2.0.5)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
+    public_suffix (3.0.0)
     puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -174,6 +182,7 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
+    slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -208,12 +217,14 @@ DEPENDENCIES
   binding_of_caller
   byebug
   dotenv-rails
+  faker
   foreman
   grpc-tools
-  gruf (~> 1.2)
+  gruf (~> 1.2.6)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
+  pry-rails (~> 0.3.4)
   puma (~> 3.7)
   rails (~> 5.1.3)
   rspec
@@ -226,4 +237,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

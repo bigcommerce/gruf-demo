@@ -1,3 +1,5 @@
+require 'faker'
+
 namespace :test do
   task :get_product, [:hostname, :id] => :environment do |_, args|
     client = test_grpc_build_client(args, id: 1)
@@ -22,6 +24,45 @@ namespace :test do
       product.message.each do |product|
         puts product.inspect
       end
+    rescue Gruf::Client::Error => e
+      puts e.error.inspect
+    end
+  end
+
+  task :create_products, [:hostname, :number] => :environment do |_, args|
+    client = test_grpc_build_client(args, number: 3)
+
+    begin
+      products = []
+      args[:number].to_i.times do
+        products << Rpc::Product.new(
+          name: Faker::Lorem.word,
+          price: rand(10.00..99.00).to_f
+        )
+      end
+      product = client.call(:CreateProducts, products)
+      puts product.message.inspect
+    rescue Gruf::Client::Error => e
+      puts e.error.inspect
+    end
+  end
+
+  task :create_products_in_stream, [:hostname, :number, :delay] => :environment do |_, args|
+    client = test_grpc_build_client(args, number: 3, delay: 0.5)
+
+    begin
+      products = []
+      args[:number].to_i.times do
+        products << Rpc::Product.new(
+          name: Faker::Lorem.word,
+          price: rand(10.00..99.00).to_f
+        )
+      end
+      enumerator = Rpc::ProductRequestEnumerator.new(products, args[:delay].to_f)
+      client.call(:CreateProductsInStream, enumerator.each_item) do |r|
+        puts "Received response: #{r.inspect}"
+      end
+
     rescue Gruf::Client::Error => e
       puts e.error.inspect
     end
