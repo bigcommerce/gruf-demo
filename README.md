@@ -27,6 +27,18 @@ bundle exec rake test:get_product
 bundle exec rake test:get_products
 ```
 
+### Client Streamer (Create a list of Products)
+
+```bash
+bundle exec rake test:create_products
+```
+
+### Bidirectional Streamer (Create a list of Products and get back responses immediately in stream)
+
+```bash
+bundle exec rake test:create_products_in_stream
+```
+
 ## License
 
 Copyright (c) 2017-present, BigCommerce Pty. Ltd. All rights reserved 
