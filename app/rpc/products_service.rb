@@ -20,6 +20,10 @@ class ProductsService < Rpc::Products::Service
   def get_product(req, call)
     product = ::Product.find(req.id.to_i)
 
+    #add_field_error(:name, :invalid_name, 'Invalid name!')
+    #fail!(req, call, :internal, :boo, 'Failure!') if has_field_errors?
+    #raise 'Oh no an exception!'
+
     Rpc::GetProductResp.new(
       product: Rpc::Product.new(
         id: product.id,
@@ -27,8 +31,11 @@ class ProductsService < Rpc::Products::Service
         price: product.price
       )
     )
-  rescue
+  rescue ActiveRecord::ActiveRecordError
     fail!(req, call, :not_found, :product_not_found, "Failed to find Product with ID: #{req.id}")
+  rescue => e
+    set_debug_info(e.message, e.backtrace[0..4])
+    fail!(req, call, :internal, :internal)
   end
 
   ##
