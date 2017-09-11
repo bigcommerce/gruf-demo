@@ -68,8 +68,6 @@ class ProductsService < Rpc::Products::Service
   # @return [Enumerable<Rpc::Product>]
   #
   def create_products_in_stream(requests, _call)
-    Rails.logger.info 'Got to create_products_in_stream'
-    #Rpc::ProductResponseEnumerator.new(requests, @received_products)
     products = []
     requests.each do |r|
       products << Product.new(name: r.name, price: r.price).to_proto
