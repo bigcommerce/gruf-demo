@@ -8,13 +8,13 @@ end
 gem 'dotenv-rails'
 gem 'faker'
 gem 'foreman'
-gem 'gruf', '~> 1.2.6'
+#gem 'gruf', '~> 1.2.6'
+gem 'gruf', git: 'https://github.com/bigcommerce/gruf', branch: 'master'
 gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.1.3'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 gem 'settingslogic'
-
 
 group :development, :test do
   gem 'better_errors'
