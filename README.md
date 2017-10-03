@@ -1,6 +1,6 @@
 # Gruf Demo Rails Application
 
-This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf) 1.2.5+, a gRPC Ruby framework.
+This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf) 2.0.0+, a gRPC Ruby framework.
 
 ## Running
 
