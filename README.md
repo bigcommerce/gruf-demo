@@ -1,8 +1,10 @@
 # Gruf Demo Rails Application
 
-This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf) 2.0.0+, a gRPC Ruby framework.
+This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf) 2.1.0+, a gRPC Ruby framework.
 
 ## Running
+
+Set the database URL as a `DATABASE_URL` env var in a `.env` file, then:
 
 ```bash
 bundle install

@@ -8,7 +8,7 @@ end
 gem 'dotenv-rails'
 gem 'faker'
 gem 'foreman'
-gem 'gruf', '~> 2.0.0'
+gem 'gruf', '~> 2.1'
 gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.1.3'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
