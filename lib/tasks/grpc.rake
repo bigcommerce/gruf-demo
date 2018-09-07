@@ -82,6 +82,9 @@ namespace :test do
       hostname: args[:hostname],
       username: 'test',
       password: args[:password],
+      client_options: {
+        timeout: 10
+      }
     })
   end
 end

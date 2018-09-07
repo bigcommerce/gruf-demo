@@ -8,7 +8,7 @@ end
 gem 'dotenv-rails'
 gem 'faker'
 gem 'foreman'
-gem 'gruf', '~> 2.1'
+gem 'gruf', '~> 2.4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.1.3'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
@@ -28,7 +28,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pry-rails', '~> 0.3.4'
+  gem 'pry'
 end
 
 group :test do
