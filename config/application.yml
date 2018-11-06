@@ -12,3 +12,6 @@ development: &development
 
 production: &production
   <<: *defaults
+
+test: &test
+  <<: *defaults

@@ -8,7 +8,7 @@ end
 gem 'dotenv-rails'
 gem 'faker'
 gem 'foreman'
-gem 'gruf', '~> 2.4.2'
+gem 'gruf', '~> 2.5'
 gem 'jbuilder', '~> 2.5'
 gem 'rails', '~> 5.1.3'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
@@ -18,6 +18,7 @@ gem 'settingslogic'
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bundler-audit'
   gem 'grpc-tools'
   gem 'sqlite3', '~> 1.3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
