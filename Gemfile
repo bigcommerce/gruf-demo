@@ -10,9 +10,9 @@ gem 'faker'
 gem 'foreman'
 gem 'gruf', '~> 2.5'
 gem 'jbuilder', '~> 2.5'
-gem 'rails', '~> 5.1.3'
+gem 'rails', '~> 5.1.6.2'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'settingslogic'
 
 group :development, :test do
