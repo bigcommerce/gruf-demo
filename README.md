@@ -8,7 +8,7 @@ Set the database URL as a `DATABASE_URL` env var in a `.env` file, then:
 
 ```bash
 bundle install
-bundle exec rake db:create
+bundle exec rake db:create db:migrate
 bundle exec rake db:seed
 foreman start
 ``` 

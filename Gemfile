@@ -5,15 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'dotenv-rails'
-gem 'faker'
-gem 'foreman'
-gem 'gruf', '~> 2.5'
-gem 'jbuilder', '~> 2.5'
-gem 'rails', '~> 5.1.6.2'
-gem 'mysql2', '>= 0.3.18', '< 0.5'
-gem 'puma', '~> 3.12'
-gem 'settingslogic'
+gem 'dotenv-rails',   '~> 2.5'
+gem 'faker',          '~> 1.9'
+gem 'foreman',        '~> 0.85'
+gem 'gruf',           '~> 2.7'
+gem 'jbuilder',       '~> 2.5'
+gem 'rails',          '~> 5.1.6.2'
+gem 'mysql2',         '>= 0.3.18', '< 0.5'
+gem 'puma',           '~> 3.12'
+gem 'settingslogic',  '~> 2.0'
 
 group :development, :test do
   gem 'better_errors'
