@@ -12,7 +12,7 @@ gem 'gruf',           '~> 2.7'
 gem 'jbuilder',       '~> 2.5'
 gem 'rails',          '~> 5.2.4.2'
 gem 'mysql2',         '>= 0.3.18', '< 0.5'
-gem 'puma',           '~> 3.12'
+gem 'puma',           '~> 3.12.4'
 gem 'settingslogic',  '~> 2.0'
 
 group :development, :test do
