@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Product.with_name('Movie Ticket').first_or_create!(price: 19.99)
-Product.with_name('Popcorn').first_or_create!(price: 6.99)
-Product.with_name('Milk Duds').first_or_create!(price: 2.99)
+
+50.times do
+  Product.with_name(Faker::Commerce.product_name).first_or_create!(
+    price: rand(1.99..99.99).to_f.round(2)
+  )
+end

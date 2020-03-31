@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faker'
 
 namespace :test do
@@ -30,7 +32,7 @@ namespace :test do
   end
 
   task :create_products, [:hostname, :number] => :environment do |_, args|
-    client = test_grpc_build_client(args, number: 3)
+    client = test_grpc_build_client(args, number: 10)
 
     begin
       products = []
@@ -48,7 +50,7 @@ namespace :test do
   end
 
   task :create_products_in_stream, [:hostname, :number, :delay] => :environment do |_, args|
-    client = test_grpc_build_client(args, number: 3, delay: 0.5)
+    client = test_grpc_build_client(args, number: 10, delay: 0.5)
 
     begin
       products = []
@@ -74,17 +76,22 @@ namespace :test do
   # @return [Gruf::Client]
   #
   def test_grpc_build_client(args, defaults = {})
-    args.with_defaults(defaults.merge(
-      hostname: '0.0.0.0:9000',
-      password: 'austin',
-    ))
-    Gruf::Client.new(service: ::Rpc::Products, options: {
-      hostname: args[:hostname],
-      username: 'test',
-      password: args[:password],
-      client_options: {
-        timeout: 10
+    args.with_defaults(
+      defaults.merge(
+        hostname: Settings.grpc.server.url,
+        password: 'austin'
+      )
+    )
+    Gruf::Client.new(
+      service: ::Rpc::Products,
+      options: {
+        hostname: args[:hostname],
+        username: 'test',
+        password: args[:password],
+        client_options: {
+          timeout: 10
+        }
       }
-    })
+    )
   end
 end

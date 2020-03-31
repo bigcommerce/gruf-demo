@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Represents a product service that is used for illustrating server calls
 #
@@ -34,12 +36,16 @@ class ProductsController < Gruf::Controllers::Base
   # @return [Rpc::Product] An enumerable of Products that is streamed
   #
   def get_products
+    return enum_for(:get_products) unless block_given?
+
     q = ::Product
     q = q.where('name LIKE ?', "%#{request.message.search}%") if request.message.search.present?
-    limit = request.message.limit.to_i > 0 ? request.message.limit : 100
-    products = q.limit(limit).all
-    products.map(&:to_proto)
-  rescue => e
+    limit = request.message.limit.to_i.positive? ? request.message.limit : 100
+    q.limit(limit).each do |product|
+      sleep(rand(0.01..0.3))
+      yield product.to_proto
+    end
+  rescue StandardError => e
     fail!(:internal, :unknown, "Unknown error when listing Products: #{e.message}")
   end
 
@@ -60,10 +66,11 @@ class ProductsController < Gruf::Controllers::Base
   # @return [Enumerable<Rpc::Product>]
   #
   def create_products_in_stream
-    products = []
+    return enum_for(:create_products_in_stream) unless block_given?
+
     request.messages.each do |r|
-      products << Product.new(name: r.name, price: r.price).to_proto
+      sleep(rand(0.01..0.3))
+      yield Product.new(name: r.name, price: r.price).to_proto
     end
-    products
   end
 end

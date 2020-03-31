@@ -1,7 +1,7 @@
 defaults: &defaults
   grpc: &grpc
     server: &server
-      url: "<%= ENV.fetch('GRPC_SERVER_URL', '0.0.0.0:9000') %>"
+      url: "<%= ENV.fetch('GRPC_SERVER_URL', '0.0.0.0:10541') %>"
       tokens: "<%= ENV.fetch('GRPC_AUTH_TOKENS', 'austin') %>"
       pool_size: <%= ENV.fetch('GRPC_SERVER_POOL_SIZE', 100).to_i %>
       pool_keep_alive: <%= ENV.fetch('GRPC_SERVER_POOL_KEEP_ALIVE', 1).to_i %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gruf'
 require 'app/proto/Products_services_pb'
 

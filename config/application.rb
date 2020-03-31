@@ -42,5 +42,6 @@ module GrufDemo
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths << "#{config.root}/app/rpc"
+    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end
