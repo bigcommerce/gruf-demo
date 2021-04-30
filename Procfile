@@ -1,1 +1,0 @@
-gruf: bundle exec gruf

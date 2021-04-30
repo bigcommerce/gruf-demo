@@ -8,20 +8,20 @@ module Rpc
   module Products
     class Service
 
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = 'rpc.Products'
 
       # Demonstrates a request response call
-      rpc :GetProduct, GetProductReq, GetProductResp
+      rpc :GetProduct, ::Rpc::GetProductReq, ::Rpc::GetProductResp
       # Demonstrates a server streamer call
-      rpc :GetProducts, GetProductsReq, stream(Product)
+      rpc :GetProducts, ::Rpc::GetProductsReq, stream(::Rpc::Product)
       # Demonstrates a client streaming call
-      rpc :CreateProducts, stream(Product), CreateProductsResp
+      rpc :CreateProducts, stream(::Rpc::Product), ::Rpc::CreateProductsResp
       # Demonstrates a bidirectional streaming call
-      rpc :CreateProductsInStream, stream(Product), stream(Product)
+      rpc :CreateProductsInStream, stream(::Rpc::Product), stream(::Rpc::Product)
     end
 
     Stub = Service.rpc_stub_class

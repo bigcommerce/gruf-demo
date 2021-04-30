@@ -6,9 +6,9 @@
 class ProductsController < Gruf::Controllers::Base
   bind ::Rpc::Products::Service
 
-  def initialize(*args)
+  def initialize(args)
     @received_products = Hash.new { |h, k| h[k] = [] }
-    super
+    super(**args)
   end
 
   ##
@@ -26,7 +26,8 @@ class ProductsController < Gruf::Controllers::Base
         price: product.price
       )
     )
-  rescue
+  rescue StandardError => e
+    set_debug_info(e.message, e.backtrace)
     fail!(:not_found, :product_not_found, "Failed to find Product with ID: #{request.message.id}")
   end
 
@@ -46,6 +47,7 @@ class ProductsController < Gruf::Controllers::Base
       yield product.to_proto
     end
   rescue StandardError => e
+    set_debug_info(e.message, e.backtrace)
     fail!(:internal, :unknown, "Unknown error when listing Products: #{e.message}")
   end
 

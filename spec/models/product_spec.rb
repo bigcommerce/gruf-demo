@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-RSpec.describe Product, type: :model do
+describe Product, type: :model do
   let(:name) { Faker::Lorem.word }
   let(:product) { described_class.new(name: name) }
 

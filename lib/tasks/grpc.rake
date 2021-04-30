@@ -3,7 +3,7 @@
 require 'faker'
 
 namespace :test do
-  task :get_product, [:hostname, :id] => :environment do |_, args|
+  task :get_product, %i[hostname id] => :environment do |_, args|
     client = test_grpc_build_client(args, id: 1)
 
     begin
@@ -14,7 +14,7 @@ namespace :test do
     end
   end
 
-  task :get_products, [:hostname, :search, :limit] => :environment do |_, args|
+  task :get_products, %i[hostname search limit] => :environment do |_, args|
     client = test_grpc_build_client(args, search: '', limit: 10)
 
     begin
@@ -31,7 +31,7 @@ namespace :test do
     end
   end
 
-  task :create_products, [:hostname, :number] => :environment do |_, args|
+  task :create_products, %i[hostname number] => :environment do |_, args|
     client = test_grpc_build_client(args, number: 10)
 
     begin
@@ -49,7 +49,7 @@ namespace :test do
     end
   end
 
-  task :create_products_in_stream, [:hostname, :number, :delay] => :environment do |_, args|
+  task :create_products_in_stream, %i[hostname number delay] => :environment do |_, args|
     client = test_grpc_build_client(args, number: 10, delay: 0.5)
 
     begin
@@ -78,18 +78,18 @@ namespace :test do
   def test_grpc_build_client(args, defaults = {})
     args.with_defaults(
       defaults.merge(
-        hostname: Settings.grpc.server.url,
-        password: 'austin'
+        hostname: ::Settings.grpc.server.url,
+        password: ::Settings.grpc.server.tokens.split(',').first
       )
     )
-    Gruf::Client.new(
+    ::Gruf::Client.new(
       service: ::Rpc::Products,
       options: {
         hostname: args[:hostname],
         username: 'test',
         password: args[:password],
         client_options: {
-          timeout: 10
+          timeout: ENV.fetch('GRPC_TIMEOUT', 10)
         }
       }
     )

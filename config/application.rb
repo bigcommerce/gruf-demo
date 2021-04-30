@@ -1,26 +1,23 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
-require "rails"
-# Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-# require "action_mailer/railtie"
-require "action_view/railtie"
-# require "action_cable/engine"
-# require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require 'rails'
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_view/railtie'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
 module GrufDemo
+  ##
+  # Base app class
+  #
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 6.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -42,6 +39,7 @@ module GrufDemo
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths << "#{config.root}/app/rpc"
-    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end
+
+require 'settings'

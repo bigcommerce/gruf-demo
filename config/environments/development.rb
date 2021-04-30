@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -26,13 +28,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Print deprecation notices to the Rails logger.
-  config.active_support.deprecation = :log
-
-  # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
-
-
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -40,7 +35,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger           = ActiveSupport::Logger.new($stdout)
   logger.formatter = config.log_formatter
   logger.level     = Logger::Severity::INFO
   config.logger    = ActiveSupport::TaggedLogging.new(logger)

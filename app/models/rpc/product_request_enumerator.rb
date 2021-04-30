@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rpc
   class ProductRequestEnumerator
     def initialize(products, delay = 0.5)

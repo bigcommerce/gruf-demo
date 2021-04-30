@@ -2,6 +2,8 @@
 
 This is a demo Rails application that utilizes [gruf](https://github.com/bigcommerce/gruf) 2.1.0+, a gRPC Ruby framework.
 
+This application is running Rails 6.1 in Ruby 3.0.
+
 ## Running
 
 Set the database URL as a `DATABASE_URL` env var in a `.env` file, then:
@@ -10,8 +12,11 @@ Set the database URL as a `DATABASE_URL` env var in a `.env` file, then:
 bundle install
 bundle exec rake db:create db:migrate
 bundle exec rake db:seed
-foreman start
+bundle exec gruf
 ``` 
+
+Alternatively, you can run `./script/e2e` to automatically run a server and issue a set of different types
+of requests against it.
 
 ## Testing with a Client
 
