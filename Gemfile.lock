@@ -126,7 +126,7 @@ GEM
     minitest (5.14.4)
     mysql2 (0.5.3)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     pry (0.14.1)
