@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gruf_demo:
+    build: './'
+    container_name: gruf_demo
+    command: gruf
+    ports:
+      - '10541'
+    environment:
+      - GRPC_VERBOSITY=debug
+    network_mode: bridge
+    mem_limit: 128m
+    restart: on-failure:5

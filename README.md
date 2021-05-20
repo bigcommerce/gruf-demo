@@ -46,6 +46,20 @@ bundle exec rake test:create_products
 bundle exec rake test:create_products_in_stream
 ```
 
+## In Docker
+
+This repository is also setup to run in a Docker container with docker-compose:
+
+```bash
+docker-compose up
+```
+
+Then, find the port docker exposed, and in another terminal, you can demo with:
+
+```
+GRPC_SERVER_URL=IP_OF_YOUR_DOCKER_INSTANCE:PORT_THAT_WAS_EXPOSED bundle exec rake test:get_product
+```
+
 ## License
 
 Copyright (c) 2017-present, BigCommerce Pty. Ltd. All rights reserved 
