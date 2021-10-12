@@ -125,14 +125,14 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     mysql2 (0.5.3)
-    nio4r (2.5.7)
+    nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (5.3.1)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -226,7 +226,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.5)
   pry
-  puma (~> 5.3)
+  puma (~> 5.5)
   rails (~> 6)
   rspec
   rspec-rails

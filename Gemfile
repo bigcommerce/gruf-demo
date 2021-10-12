@@ -13,7 +13,7 @@ gem 'foreman',        '>= 0.85'
 gem 'gruf',           '~> 2.9'
 gem 'jbuilder',       '~> 2.5'
 gem 'mysql2',         '>= 0.5'
-gem 'puma',           '~> 5.3'
+gem 'puma',           '~> 5.5'
 gem 'rails',          '~> 6'
 gem 'settingslogic',  '~> 2.0'
 
