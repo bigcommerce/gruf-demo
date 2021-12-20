@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2017_08_10_220531) do
 
-  create_table "products", charset: "utf8", force: :cascade do |t|
+  create_table "products", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.datetime "created_at", null: false
