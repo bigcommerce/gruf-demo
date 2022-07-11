@@ -78,8 +78,8 @@ namespace :test do
   def test_grpc_build_client(args, defaults = {})
     args.with_defaults(
       defaults.merge(
-        hostname: ::Settings.grpc.server.url,
-        password: ::Settings.grpc.server.tokens.split(',').first
+        hostname: "#{::ENV.fetch('GRPC_SERVER_HOST', '0.0.0.0')}:#{::ENV.fetch('GRPC_SERVER_PORT', 10_541)}",
+        password: ::ENV.fetch('GRPC_AUTH_TOKEN', 'austin').to_s.strip
       )
     )
     ::Gruf::Client.new(

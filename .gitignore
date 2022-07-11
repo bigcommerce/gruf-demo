@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 
+/vendor
 /node_modules
 /yarn-error.log
 

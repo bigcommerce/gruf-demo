@@ -38,8 +38,5 @@ module GrufDemo
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths << "#{config.root}/lib"
-    config.autoload_paths << "#{config.root}/app/rpc"
   end
 end
-
-require 'settings'

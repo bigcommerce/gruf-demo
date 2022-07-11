@@ -21,14 +21,16 @@ class ProductsController < Gruf::Controllers::Base
 
     Rpc::GetProductResp.new(
       product: Rpc::Product.new(
-        id: product.id,
-        name: product.name,
-        price: product.price
+        id: product.id.to_i,
+        name: product.name.to_s,
+        price: product.price.to_f
       )
     )
-  rescue StandardError => e
-    set_debug_info(e.message, e.backtrace)
+  rescue ActiveRecord::RecordNotFound => _e
     fail!(:not_found, :product_not_found, "Failed to find Product with ID: #{request.message.id}")
+  rescue StandardError => e
+    set_debug_info(e.message, e.backtrace[0..4])
+    fail!(:internal, :internal, "ERROR: #{e.message}")
   end
 
   ##
@@ -47,8 +49,8 @@ class ProductsController < Gruf::Controllers::Base
       yield product.to_proto
     end
   rescue StandardError => e
-    set_debug_info(e.message, e.backtrace)
-    fail!(:internal, :unknown, "Unknown error when listing Products: #{e.message}")
+    set_debug_info(e.message, e.backtrace[0..4])
+    fail!(:internal, :internal, "ERROR: #{e.message}")
   end
 
   ##
@@ -62,6 +64,9 @@ class ProductsController < Gruf::Controllers::Base
       products << Product.new(name: message.name, price: message.price).to_proto
     end
     Rpc::CreateProductsResp.new(products: products)
+  rescue StandardError => e
+    set_debug_info(e.message, e.backtrace[0..4])
+    fail!(:internal, :internal, "ERROR: #{e.message}")
   end
 
   ##
@@ -73,6 +78,9 @@ class ProductsController < Gruf::Controllers::Base
     request.messages.each do |r|
       sleep(rand(0.01..0.3))
       yield Product.new(name: r.name, price: r.price).to_proto
+    rescue StandardError => e
+      set_debug_info(e.message, e.backtrace[0..4])
+      fail!(:internal, :internal, "ERROR: #{e.message}")
     end
   end
 end

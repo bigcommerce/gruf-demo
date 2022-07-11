@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] = 'test'
-
+ENV['RACK_ENV'] = 'test'
 require 'dotenv'
-Dotenv.overload
+require 'pry'
+Dotenv.load
 require 'faker'
-
-require File.expand_path('../config/environment', __dir__)
+require_relative '../config/environment'
+abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
-ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
