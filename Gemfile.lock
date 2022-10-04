@@ -87,7 +87,7 @@ GEM
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    google-protobuf (3.21.2)
+    google-protobuf (3.21.7)
     googleapis-common-protos-types (1.3.2)
       google-protobuf (~> 3.14)
     grpc (1.46.3)
