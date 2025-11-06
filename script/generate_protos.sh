@@ -2,4 +2,6 @@
 
 set -e
 
-grpc_tools_ruby_protoc --ruby_out=app/proto --grpc_out=app/proto app/proto/Products.proto
+cd proto/
+
+grpc_tools_ruby_protoc --ruby_out=./rpc --grpc_out=./rpc Products.proto

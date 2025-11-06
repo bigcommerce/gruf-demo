@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_08_10_220531) do
-
+ActiveRecord::Schema[7.2].define(version: 2017_08_10_220531) do
   create_table "products", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["name"], name: "index_products_on_name"
   end
-
 end

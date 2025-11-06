@@ -4,9 +4,10 @@ require 'gruf'
 # It's typically best to generate your protobuf files in a separate, centralized repository across your architecture,
 # and then generate gems to use internally to load them. For this demo repository, however, we'll just put them in
 # lib/ and load them manually here.
-proto_dir = File.join(Rails.root, 'lib', 'proto')
+proto_dir = File.join(Rails.root, 'proto', 'rpc')
 $LOAD_PATH.unshift(proto_dir)
-require 'app/proto/Products_services_pb'
+require 'Products_pb'
+require 'Products_services_pb'
 
 Gruf.configure do |c|
   c.interceptors.use(::Gruf::Interceptors::Instrumentation::RequestLogging::Interceptor, formatter: :logstash)

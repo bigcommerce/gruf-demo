@@ -10,11 +10,11 @@ end
 gem 'dotenv-rails',   '>= 2.5'
 gem 'faker',          '>= 1.9'
 gem 'foreman',        '>= 0.85'
-gem 'gruf',           '~> 2.9'
+gem 'gruf',           '~> 2.21'
 gem 'jbuilder',       '~> 2.5'
-gem 'mysql2',         '>= 0.5'
-gem 'puma',           '~> 5.6'
-gem 'rails',          '~> 6'
+gem 'mysql2',         '>= 0.5.7'
+gem 'puma',           '>= 5.6'
+gem 'rails',          '~> 7'
 gem 'settingslogic',  '~> 2.0'
 
 group :development, :test do
@@ -26,7 +26,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'pry'
 end
 
@@ -35,4 +35,3 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
 end
-
